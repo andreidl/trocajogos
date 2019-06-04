@@ -1,8 +1,7 @@
-## Welcome to GitHub Pages
+## Swagger
 
-You can use the [editor on GitHub](https://github.com/andreidl/trocajogos/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Modelagem atraves do [swagger](http://editor.swagger.io/)
+1 - necessario importar o arquivo : [trocajogos.json](https://github.com/andreidl/trocajogos/blob/master/trocajogos.json)
 
 ### Markdown
 
