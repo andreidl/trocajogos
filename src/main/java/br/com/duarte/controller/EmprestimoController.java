@@ -1,7 +1,6 @@
 package br.com.duarte.controller;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,28 +10,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.duarte.model.Dialogo;
-import br.com.duarte.service.DialogoService;
+import br.com.duarte.model.Emprestimo;
+import br.com.duarte.service.EmprestimoService;
 
 @RestController
-@RequestMapping("usuario")
-public class DialogoController {
+@RequestMapping("emprestimo")
+public class EmprestimoController {
 
 	@Autowired
-	private DialogoService service;
+	private EmprestimoService service;
 
 	@GetMapping
 	public ModelAndView findAll() {
-		ModelAndView mv = new ModelAndView("/dialogo");
-		mv.addObject("dialogos", service.findAll());
+		ModelAndView mv = new ModelAndView("/emprestimo");
+		mv.addObject("emprestimos", service.findAll());
 
 		return mv;
 	}
 
 	@GetMapping("/add")
-	public ModelAndView add(Dialogo dialogo) {
-		ModelAndView mv = new ModelAndView("/dialogoAdd");
-		mv.addObject("dialogo/add", dialogo);
+	public ModelAndView add(Emprestimo emprestimo) {
+		ModelAndView mv = new ModelAndView("/emprestimoAdd");
+		mv.addObject("emprestimo/add", emprestimo);
 
 		return mv;
 	}
@@ -43,7 +42,7 @@ public class DialogoController {
 	}	
 
 	@PostMapping("/save")
-	public ModelAndView save(@Valid Dialogo post, BindingResult result) {
+	public ModelAndView save(@Valid Emprestimo post, BindingResult result) {
 		if (result.hasErrors()) {
 			return add(post);
 		}

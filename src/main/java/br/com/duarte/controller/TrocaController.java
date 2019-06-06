@@ -1,7 +1,6 @@
 package br.com.duarte.controller;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,28 +10,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.duarte.model.Dialogo;
-import br.com.duarte.service.DialogoService;
+import br.com.duarte.model.Troca;
+import br.com.duarte.service.TrocaService;
 
 @RestController
-@RequestMapping("usuario")
-public class DialogoController {
+@RequestMapping("troca")
+public class TrocaController {
 
 	@Autowired
-	private DialogoService service;
+	private TrocaService service;
 
 	@GetMapping
 	public ModelAndView findAll() {
-		ModelAndView mv = new ModelAndView("/dialogo");
-		mv.addObject("dialogos", service.findAll());
+		ModelAndView mv = new ModelAndView("/troca");
+		mv.addObject("trocas", service.findAll());
 
 		return mv;
 	}
 
 	@GetMapping("/add")
-	public ModelAndView add(Dialogo dialogo) {
-		ModelAndView mv = new ModelAndView("/dialogoAdd");
-		mv.addObject("dialogo/add", dialogo);
+	public ModelAndView add(Troca troca) {
+		ModelAndView mv = new ModelAndView("/trocaAdd");
+		mv.addObject("troca/add", troca);
 
 		return mv;
 	}
@@ -43,7 +42,7 @@ public class DialogoController {
 	}	
 
 	@PostMapping("/save")
-	public ModelAndView save(@Valid Dialogo post, BindingResult result) {
+	public ModelAndView save(@Valid Troca post, BindingResult result) {
 		if (result.hasErrors()) {
 			return add(post);
 		}
