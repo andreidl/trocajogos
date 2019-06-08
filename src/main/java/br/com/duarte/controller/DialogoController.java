@@ -15,7 +15,7 @@ import br.com.duarte.model.Dialogo;
 import br.com.duarte.service.DialogoService;
 
 @RestController
-@RequestMapping("usuario")
+@RequestMapping("dialogo")
 public class DialogoController {
 
 	@Autowired
