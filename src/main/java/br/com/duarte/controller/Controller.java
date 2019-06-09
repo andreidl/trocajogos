@@ -7,13 +7,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/")
-public class IndexController {
+public class Controller {
 
 
 	@GetMapping
-	public ModelAndView findAll() {
+	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("/index");
 
+		return mv;
+	}
+	
+	@GetMapping("/login")
+	public ModelAndView login() {
+		ModelAndView mv = new ModelAndView("/login");
 		return mv;
 	}
 
