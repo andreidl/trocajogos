@@ -40,7 +40,7 @@ public class UsuarioController {
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
 		return add(service.findOne(id));
-	}	
+	}
 
 	@PostMapping("/save")
 	public ModelAndView save(@Valid Usuario post, BindingResult result) {
@@ -55,6 +55,17 @@ public class UsuarioController {
 	public ModelAndView delete(@PathVariable("id") Long id) {
 		service.delete(id);
 		return findAll();
+	}
+
+	@GetMapping("/logar/{login,senha}")
+	public ModelAndView logar(@PathVariable("login") String login, @PathVariable("senha") String senha) {
+		if (service.findByLoginAndPassword(login, senha) != null) {
+			ModelAndView mv = new ModelAndView("/dashboard");
+			return mv;
+		} else {
+			ModelAndView mv = new ModelAndView("/error");
+			return mv;
+		}
 	}
 
 }

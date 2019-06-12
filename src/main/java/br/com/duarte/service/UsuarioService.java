@@ -29,5 +29,9 @@ public class UsuarioService {
 	public void delete(Long id) {
 		repository.delete(id);
 	}
-
+	
+	public Usuario findByLoginAndPassword(String login,String password) {
+		return repository.findByLoginAndPassword(login,password);
+	}
+	
 }

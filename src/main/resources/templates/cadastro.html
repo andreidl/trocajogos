@@ -29,19 +29,20 @@
 
 	<div id="login-page">
 		<div class="container">
-			<form class="form-login" th:object="${usuario}" method="GET">
-				<h2 class="form-login-heading">sign in now</h2>
+			<form class="form-login" th:object="${usuario}" th:action="@{/cadastrar}" method="POST">
+				<h2 class="form-login-heading">Cadastre-se aqui!</h2>
 				<div class="login-wrap">
-					<input type="text" class="form-control" placeholder="User ID"
-						autofocus="autofocus" th:value="${usuario.login}" th:field="*{login}" /> <br /> <input type="password"
-						class="form-control" placeholder="Password"  th:name="*{senha}"/> <br />
-					<button class="btn btn-theme btn-block" th:href="@{/logar{login,senha}(login=${usuario.login}, senha =${usuario.senha})}"
-						type="submit">
-						<i class="fa fa-lock"></i> Login
+					<input type="text" class="form-control" placeholder="Login" name="login" /> 
+						<br/> 
+						<input type="password"
+						class="form-control" placeholder="Password" name="senha" /> <br/> 
+					<button class="btn btn-theme btn-block"	type="submit">
+						<i class="fa fa-lock"></i> Cadastrar
 					</button>
+					
 				</div>
 			</form>
-				<!-- Modal 
+				<!--  Modal 
 				<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
 					tabindex="-1" id="myModal" class="modal fade">
 					<div class="modal-dialog">
@@ -65,7 +66,6 @@
 					</div>
 				</div>
 				modal -->
-			
 		</div>
 	</div>
 
