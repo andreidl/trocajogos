@@ -26,116 +26,116 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        return bCryptPasswordEncoder;
-    }
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		return bCryptPasswordEncoder;
+	}
 
 	@Override
-	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> arg0) {
+	public void configurePathMatch(PathMatchConfigurer configurer) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addCorsMappings(CorsRegistry arg0) {
+	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addFormatters(FormatterRegistry arg0) {
+	public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addInterceptors(InterceptorRegistry arg0) {
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry arg0) {
+	public void addFormatters(FormatterRegistry registry) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> arg0) {
+	public void addInterceptors(InterceptorRegistry registry) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addViewControllers(ViewControllerRegistry arg0) {
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void configureAsyncSupport(AsyncSupportConfigurer arg0) {
+	public void addCorsMappings(CorsRegistry registry) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void configureContentNegotiation(ContentNegotiationConfigurer arg0) {
+	public void addViewControllers(ViewControllerRegistry registry) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer arg0) {
+	public void configureViewResolvers(ViewResolverRegistry registry) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> arg0) {
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void configureMessageConverters(List<HttpMessageConverter<?>> arg0) {
+	public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void configurePathMatch(PathMatchConfigurer arg0) {
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void configureViewResolvers(ViewResolverRegistry arg0) {
+	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> arg0) {
+	public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void extendMessageConverters(List<HttpMessageConverter<?>> arg0) {
+	public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public MessageCodesResolver getMessageCodesResolver() {
+	public Validator getValidator() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Validator getValidator() {
+	public MessageCodesResolver getMessageCodesResolver() {
 		// TODO Auto-generated method stub
 		return null;
 	}
