@@ -29,19 +29,22 @@
 
 	<div id="login-page">
 		<div class="container">
-			<form class="form-login" th:object="${usuario}" method="GET">
+			<form th:action="@{/registration}" method="get">
+				<button class="btn btn-md btn-warning btn-block" type="Submit">Go
+					To Registration Page</button>
+			</form>
+			<form class="form-login" th:action="@{/login}" method="POST">
 				<h2 class="form-login-heading">sign in now</h2>
 				<div class="login-wrap">
 					<input type="text" class="form-control" placeholder="User ID"
-						autofocus="autofocus" th:value="${usuario.login}" th:field="*{login}" /> <br /> <input type="password"
-						class="form-control" placeholder="Password"  th:name="*{senha}"/> <br />
-					<button class="btn btn-theme btn-block" th:href="@{/logar{login,senha}(login=${usuario.login}, senha =${usuario.senha})}"
-						type="submit">
+						autofocus="autofocus" id="login" name="login" /> <br /> <input type="password"
+						class="form-control" placeholder="Password"  id="password" name="password"/> <br />
+					<button class="btn btn-theme btn-block" type="submit">
 						<i class="fa fa-lock"></i> Login
-					</button>
+					</button> 
 				</div>
 			</form>
-				<!-- Modal 
+			<!-- Modal 
 				<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
 					tabindex="-1" id="myModal" class="modal fade">
 					<div class="modal-dialog">
@@ -65,7 +68,7 @@
 					</div>
 				</div>
 				modal -->
-			
+
 		</div>
 	</div>
 

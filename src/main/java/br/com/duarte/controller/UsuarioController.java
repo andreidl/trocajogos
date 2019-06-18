@@ -57,15 +57,4 @@ public class UsuarioController {
 		return findAll();
 	}
 
-	@GetMapping("/logar/{login,senha}")
-	public ModelAndView logar(@PathVariable("login") String login, @PathVariable("senha") String senha) {
-		if (service.findByLoginAndPassword(login, senha) != null) {
-			ModelAndView mv = new ModelAndView("/dashboard");
-			return mv;
-		} else {
-			ModelAndView mv = new ModelAndView("/error");
-			return mv;
-		}
-	}
-
 }
