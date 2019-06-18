@@ -16,7 +16,7 @@ import br.com.duarte.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 
-	private static UsuarioRepository usuarioRepository;
+	private UsuarioRepository usuarioRepository;
 	private RoleRepository roleRepository;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -56,5 +57,37 @@ public class UsuarioController {
 		service.delete(id);
 		return findAll();
 	}
+	
+	
+	
+	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+	public ModelAndView registration() {
+		ModelAndView modelAndView = new ModelAndView();
+		Usuario Usuario = new Usuario();
+		modelAndView.addObject("Usuario", Usuario);
+		modelAndView.setViewName("cadastro");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
+    public ModelAndView createNewUser(@Valid Usuario usuario, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+//		Usuario usuarioExists = usuarioService.findUsuarioByLogin(usuario.getLogin());
+//        if (usuarioExists != null) {
+//            bindingResult
+//                    .rejectValue("email", "error.user",
+//                            "There is already a user registered with the email provided");
+//        }
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("cadastro");
+        } else {
+        	service.saveUsuario(usuario);
+            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("user", new Usuario());
+            modelAndView.setViewName("cadastro");
+
+        }
+        return modelAndView;
+    }
 
 }

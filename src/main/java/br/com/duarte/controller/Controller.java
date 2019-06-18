@@ -19,24 +19,18 @@ public class Controller {
 		return mv;
 	}
 
-	@GetMapping("/login")
-	public ModelAndView login() {
-		ModelAndView mv = new ModelAndView("/login");
-		return mv;
-	}
-
-	@GetMapping("/cadastro")
-	public ModelAndView cadastro() {
-		ModelAndView mv = new ModelAndView("/cadastro");
-		return mv;
-	}
-
-	@PostMapping("/cadastrar")
-	public ModelAndView cadastrar(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("/login");
-		mv.addObject("usuario/add", usuario);
-
-		return mv;
-	}
+//	@GetMapping("/cadastro")
+//	public ModelAndView cadastro() {
+//		ModelAndView mv = new ModelAndView("/cadastro");
+//		return mv;
+//	}
+//
+//	@PostMapping("/cadastrar")
+//	public ModelAndView cadastrar(Usuario usuario) {
+//		ModelAndView mv = new ModelAndView("/login");
+//		mv.addObject("usuario/add", usuario);
+//
+//		return mv;
+//	}
 
 }
