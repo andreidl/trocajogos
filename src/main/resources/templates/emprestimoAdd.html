@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 
 <meta charset="utf-8" />
@@ -24,76 +25,121 @@
 <script th:src="@{/lib/chart-master/Chart.js}"></script>
 </head>
 <body>
-<section id="container">
+	<section id="container">
 		<div th:replace="components/header :: header"></div>
 		<div th:replace="components/sidebar :: aside"></div>
-		
+
 		<section id="main-content">
 			<section class="wrapper site-min-height">
 				<h3>
 					<i class="fa fa-angle-right"></i> Emprestimo
 				</h3>
 				<div class="row mt">
-				
-			<form class="form-horizontal" th:object="${emprestimo}" th:action="@{/emprestimo/save}" method="POST" style="margin: 20px">
-				<div class="form-group">
- 					<fieldset>
-						<div class="form-group row">
-							<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
-								<div th:each="detailedError : ${#fields.detailedErrors()}">
-									<span th:text="${detailedError.message}"></span>
+
+					<form class="form-horizontal" th:object="${emprestimo}"
+						th:action="@{/emprestimo/save}" method="POST" style="margin: 20px">
+						<div class="form-group">
+							<fieldset>
+								<div class="form-group row">
+									<div class="alert alert-danger"
+										th:if="${#fields.hasAnyErrors()}">
+										<div th:each="detailedError : ${#fields.detailedErrors()}">
+											<span th:text="${detailedError.message}"></span>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div> 					
+
+								<label>Selecione o Amigo:</label>
+								<div class="btn-group">
+								
+									<button type="button" class="btn btn-default dropdown-toggle"
+										data-toggle="dropdown" aria-expanded="true">
+										Clique e Selecione <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">INSIRA AQUI O DATA SOURCE</a></li>
+										<li><a href="#">Amigo N</a></li>
+									</ul>
+								</div>
+								<label>Selecione o Jogo deste amigo:</label>
+								<div class="btn-group">								
+									<button type="button" class="btn btn-default dropdown-toggle"
+										data-toggle="dropdown" aria-expanded="true">
+										Clique e Selecione <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">INSIRA AQUI O DATA SOURCE</a></li>
+										<li><a href="#">Jogo N</a></li>
+									</ul>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-1">
+										<input type="text" class="form-control input-sm" id="id"
+											th:field="*{id}" readOnly="readonly" />
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-4"
+										th:classappend="${#fields.hasErrors('dataDevolucao')}? 'has-error'">
+										<label>Data Devolução</label> <input type="text"
+											class="form-control input-sm" th:field="*{dataDevolucao}"
+											autofocus="autofocus"
+											placeholder="Data de Devolução (Prevista)" maxlength="50" />
+									</div>
+								</div>
+							<!--  	<div class="form-group row">
+									<div class="col-md-4"
+										th:classappend="${#fields.hasErrors('dataDevolucaoEfetiva')}? 'has-error'">
+										<label>Data Devolução (Efetiva)</label> <input type="text"
+											class="form-control input-sm"
+											th:field="*{dataDevolucaoEfetiva}" autofocus="autofocus"
+											placeholder="Data de Devolução (Efetiva)" maxlength="50" />
+									</div>
+								</div> -->
+								<div class="form-group row">
+									<div class="col-md-4"
+										th:classappend="${#fields.hasErrors('dataEmprestimo')}? 'has-error'">
+										<label>Data Emprestimo</label> <input type="text"
+											class="form-control input-sm" th:field="*{dataEmprestimo}"
+											autofocus="autofocus" placeholder="Data de Emprestimo"
+											maxlength="50" />
+									</div>
+								</div>
+							<!--  	<div class="form-group row">
+									<div class="col-md-4"
+										th:classappend="${#fields.hasErrors('idSolicitante')}? 'has-error'">
+										<label>Solicitante</label> <input type="text"
+											class="form-control input-sm" th:field="*{idSolicitante}"
+											autofocus="autofocus" placeholder="Solicitante do Emprestimo"
+											maxlength="50" />
+									</div>
+								</div> -->
+							<!--  	<div class="form-group row">
+									<div class="col-md-4"
+										th:classappend="${#fields.hasErrors('jogoEmprestado')}? 'has-error'">
+										<label>Jogo Emprestado</label> <input type="text"
+											class="form-control input-sm" th:field="*{jogoEmprestado}"
+											autofocus="autofocus" placeholder="Jogo Emprestado"
+											maxlength="50" />
+									</div>
+								</div> -->
+							<!--  	<div class="form-group row">
+									<div class="col-md-4"
+										th:classappend="${#fields.hasErrors('idSolicitado')}? 'has-error'">
+										<label>Cedente do Emprestimo</label> <input type="text"
+											class="form-control input-sm" th:field="*{idSolicitado}"
+											autofocus="autofocus" placeholder="Cedente do Emprestimo"
+											maxlength="50" />
+									</div>
+								</div> -->
+							</fieldset>
+						</div>
 						<div class="form-group row">
-						    <div class="col-md-1">
-						        <input type="text" class="form-control input-sm" id="id" th:field="*{id}" readOnly="readonly"/>
-						    </div>
-						 </div>
-						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('dataDevolucao')}? 'has-error'">
-							    <label>Data Devolução</label>
-							    <input type="text" class="form-control input-sm" th:field="*{dataDevolucao}" autofocus="autofocus" placeholder="Data de Devolução (Prevista)" maxlength="50"/>
-							</div>
+							<button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+							<a th:href="@{#}" class="btn btn-sm btn-default">Cancelar</a>
 						</div>
-						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('dataDevolucaoEfetiva')}? 'has-error'">
-							    <label>Data Devolução (Efetiva)</label>
-							    <input type="text" class="form-control input-sm" th:field="*{dataDevolucaoEfetiva}" autofocus="autofocus" placeholder="Data de Devolução (Efetiva)" maxlength="50"/>
-							</div>
-						</div>
-						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('dataEmprestimo')}? 'has-error'">
-							    <label>Data Emprestimo</label>
-							    <input type="text" class="form-control input-sm" th:field="*{dataEmprestimo}" autofocus="autofocus" placeholder="Data de Emprestimo" maxlength="50"/>
-							</div>
-						</div>
-						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('idSolicitante')}? 'has-error'">
-							    <label>Solicitante</label>
-							    <input type="text" class="form-control input-sm" th:field="*{idSolicitante}" autofocus="autofocus" placeholder="Solicitante do Emprestimo" maxlength="50"/>
-							</div>
-						</div>
-						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('jogoEmprestado')}? 'has-error'">
-							    <label>Jogo Emprestado</label>
-							    <input type="text" class="form-control input-sm" th:field="*{jogoEmprestado}" autofocus="autofocus" placeholder="Jogo Emprestado" maxlength="50"/>
-							</div>
-						</div>
-						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('idSolicitado')}? 'has-error'">
-							    <label>Cedente do Emprestimo</label>
-							    <input type="text" class="form-control input-sm" th:field="*{idSolicitado}" autofocus="autofocus" placeholder="Cedente do Emprestimo" maxlength="50"/>
-							</div>
-						</div>													
-					</fieldset>
-				</div>
-				<div class="form-group row">
-					<button type="submit" class="btn btn-sm btn-primary">Salvar</button>
-					<a th:href="@{#}" class="btn btn-sm btn-default">Cancelar</a>
-				</div>
-			</form>
-	
+					</form>
+
 				</div>
 			</section>
 			<!-- /wrapper -->
@@ -150,6 +196,7 @@
 		
 		
 		
+		
     $(document).ready(function() {
       $("#date-popover").popover({
         html: true,
@@ -191,6 +238,7 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   
+	
 	
 	
 	
