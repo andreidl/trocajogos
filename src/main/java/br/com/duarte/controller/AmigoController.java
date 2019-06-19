@@ -47,7 +47,7 @@ public class AmigoController {
 	public ModelAndView add(Amigo amigo) {
 		ModelAndView mv = new ModelAndView("/amigoAdd");
 		mv.addObject("amigo/add", amigo);
-
+		mv.addObject("amigo", service.findAll());
 		return mv;
 	}
 
