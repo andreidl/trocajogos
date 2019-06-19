@@ -36,16 +36,10 @@
 			<form class="form-horizontal" th:object="${desejo}" th:action="@{/desejo/save}" method="POST" style="margin:20px">
 				<div class="form-group">
  					<fieldset>
-						<div class="form-group row">
-							<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
-								<div th:each="detailedError : ${#fields.detailedErrors()}">
-									<span th:text="${detailedError.message}"></span>
-								</div>
-							</div>
-						</div> 					
+						 					
 						<div class="form-group row">
 						    <div class="col-md-1">
-						        <input type="text" class="form-control input-sm" id="id" th:field="*{dsjId}" readOnly="readonly"/>
+						        <input type="text" class="form-control input-sm" id="dsjId" name="dsjId" th:value="*{dsjId}" readOnly="readonly"/>
 						    </div>
 						 </div>
 						 <!-- nome;
@@ -53,21 +47,21 @@
 						idDesejo;
 						foto; -->
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('dsjNomeJogo')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Nome</label>
-							    <input type="text" class="form-control input-sm" th:field="*{dsjNomeJogo}" autofocus="autofocus" placeholder="Nome do Jogo" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" id="dsjNomeJogo" name="dsjNomeJogo" th:value="*{dsjNomeJogo}" autofocus="autofocus" placeholder="Nome do Jogo" maxlength="50"/>
 							</div>
 						</div>
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('dsjDescricaoJogo')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Descricao</label>
-							    <input type="text" class="form-control input-sm" th:field="*{dsjDescricaoJogo}" autofocus="autofocus" placeholder="Descricao do Jogo" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" id="dsjDescricaoJogo" name="dsjDescricaoJogo" th:value="*{dsjDescricaoJogo}" autofocus="autofocus" placeholder="Descricao do Jogo" maxlength="50"/>
 							</div>
 						</div>
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('dsjDataRegistroDesejo')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Data do Registro</label>
-							    <input type="text" class="form-control input-sm" th:field="*{dsjDataRegistroDesejo}" autofocus="autofocus" placeholder="Data do Registro" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" id="dsjDataRegistroDesejo" name="dsjDataRegistroDesejo" th:value="*{dsjDataRegistroDesejo}" autofocus="autofocus" placeholder="Data do Registro" maxlength="50"/>
 							</div>
 						</div>
 												

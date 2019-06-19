@@ -43,7 +43,9 @@ public class DesejoController {
 
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
-		return add(service.findOne(id));
+		ModelAndView mv = new ModelAndView("/desejoAdd");
+		mv.addObject("desejo", service.findOne(id));
+		return mv;
 	}
 
 	@PostMapping("/save")
