@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.duarte.model.Amigo;
 import br.com.duarte.service.AmigoService;
+import br.com.duarte.service.UsuarioService;
 
 @RestController
 @RequestMapping("amigo")
@@ -20,6 +21,9 @@ public class AmigoController {
 
 	@Autowired
 	private AmigoService service;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	/** chama tela de listagem jogo
 	 * 
@@ -28,6 +32,7 @@ public class AmigoController {
 	@GetMapping
 	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView("/amigo");
+		mv.addObject("usuario", usuarioService.findAll());
 		mv.addObject("amigo", service.findAll());
 
 		return mv;

@@ -44,11 +44,7 @@ public class Usuario implements Serializable {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 	
-//	@ManyToMany(cascade = CascadeType.ALL)
-	//    @JoinTable(name = "user_amigo", 
-	//    joinColumns = @JoinColumn(name = "user_id", referencedColumnName="usu_id_amigo_solicitado"), 
-	//    inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName="usu_id_amigo_solicitante"))
-	//    private Set<Amigo> amigos;
+
 	
 	public int getActive() {
 		return active;
