@@ -38,11 +38,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/login").permitAll()
-				.antMatchers("/cadastro").permitAll().and().csrf().disable().formLogin().loginPage("/login")
-				.failureUrl("/login?error=true").defaultSuccessUrl("/dashboard").usernameParameter("login")
-				.passwordParameter("senha").and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/");
+		http.csrf().disable().authorizeRequests().antMatchers("/").permitAll().antMatchers("/login").permitAll()
+				.antMatchers("/cadastro").permitAll()
+				
+				
+				.antMatchers("/amigo/**").access("HasRole('ADMIN')")
+				.antMatchers("/dashboard/**").hasAnyRole("ADMIN")
+				.anyRequest()
+                .authenticated().and().formLogin()
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/dashboard")
+                .failureUrl("login?error=true")
+                .usernameParameter("login")
+				.passwordParameter("senha")
+                .and().logout()
+                .permitAll()
+                .logoutSuccessUrl("/login?Logout");
 	}
 	@Override
     public void configure(WebSecurity web) throws Exception {

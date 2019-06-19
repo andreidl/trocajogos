@@ -23,17 +23,38 @@ public class LoginController {
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("dashboard");
+		modelAndView.setViewName("login");
 		return modelAndView;
 	}
-	/*
-	 * @RequestMapping(value = "/admin/home", method = RequestMethod.GET) public
-	 * ModelAndView home() { ModelAndView modelAndView = new ModelAndView();
-	 * Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	 * Usuario Usuario = usuarioService.findUsuarioByLogin(auth.getName());
-	 * modelAndView.addObject("UsuarioName", "Welcome " + Usuario.getNome() + " (" +
-	 * Usuario.getLogin() + ")"); modelAndView.addObject("adminMessage",
-	 * "Content Available Only for Usuarios with Admin Role");
-	 * modelAndView.setViewName("admin/home"); return modelAndView; }
-	 */
+	
+	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+	public ModelAndView registration() {
+		ModelAndView modelAndView = new ModelAndView();
+		Usuario Usuario = new Usuario();
+		modelAndView.addObject("Usuario", Usuario);
+		modelAndView.setViewName("cadastro");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
+    public ModelAndView createNewUser(@Valid Usuario usuario, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+//		Usuario usuarioExists = usuarioService.findUsuarioByLogin(usuario.getLogin());
+//        if (usuarioExists != null) {
+//            bindingResult
+//                    .rejectValue("email", "error.user",
+//                            "There is already a user registered with the email provided");
+//        }
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("cadastro");
+        } else {
+        	usuarioService.saveUsuario(usuario);
+            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("user", new Usuario());
+            modelAndView.setViewName("login");
+
+        }
+        return modelAndView;
+    }
+	
 }
