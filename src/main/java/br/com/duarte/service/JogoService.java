@@ -31,7 +31,7 @@ public class JogoService {
 	}
 	
 	public List<Jogo> findByUsuario(Long id) {
-		return (List<Jogo>) repository.findByUsuario(id);
+		return (List<Jogo>) repository.findByIdUsuario(id);
 	}
 
 }

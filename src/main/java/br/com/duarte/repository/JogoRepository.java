@@ -8,7 +8,7 @@ import br.com.duarte.model.Jogo;
 
 public interface JogoRepository extends JpaRepository<Jogo, Long> {
 	
-	public List<Jogo> findByUsuario(Long id);
+	public List<Jogo> findByIdUsuario(Long id);
 	
 //	@Query("SELECT p FROM Person p WHERE LOWER(p.lastName) = LOWER(:lastName)")
  //   public List<Person> find(@Param("lastName") String lastName);

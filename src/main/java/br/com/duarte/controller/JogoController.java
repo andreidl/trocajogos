@@ -45,7 +45,8 @@ public class JogoController {
 	@GetMapping("/add")
 	public ModelAndView add(Jogo jogo) {
 		ModelAndView mv = new ModelAndView("/jogoAdd");
-		mv.addObject("usuarios", usuarioService.findAll());
+		Long id = new Long(1);
+		mv.addObject("usuarios", service.findByUsuario(id));
 		mv.addObject("jogo/add", jogo);
 
 		return mv;

@@ -1,6 +1,7 @@
 package br.com.duarte.controller;
 
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.duarte.model.Emprestimo;
 import br.com.duarte.service.EmprestimoService;
+import br.com.duarte.service.JogoService;
 
 @RestController
 @RequestMapping("emprestimo")
@@ -19,6 +21,9 @@ public class EmprestimoController {
 
 	@Autowired
 	private EmprestimoService service;
+
+	@Autowired
+	private JogoService jogoService;
 
 	@GetMapping
 	public ModelAndView findAll() {
@@ -39,7 +44,24 @@ public class EmprestimoController {
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
 		return add(service.findOne(id));
-	}	
+	}
+
+	@GetMapping("/usuario/{id}")
+	public ModelAndView findById(@PathVariable("id") Long id) {
+		
+		
+		ModelAndView mv = new ModelAndView("/emprestimoId");
+		mv.addObject("emprestimo", jogoService.findByUsuario(id));
+
+		return mv;
+	}
+	
+	@GetMapping("/usuario/add")
+	public ModelAndView saveWithId(@PathVariable("id") Long id) {
+		Emprestimo emprestimo = service.findOne(id);
+		service.save(emprestimo);
+		return findAll();
+	}
 
 	@PostMapping("/save")
 	public ModelAndView save(@Valid Emprestimo post, BindingResult result) {

@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+//@NamedQuery(name = "Emprestimo.findByIdSolicitante", query = "SELECT e FROM emprestimo e WHERE e.idSolicitante = ?1 ")
 public class Emprestimo implements Serializable {
 	/**
 	 * 

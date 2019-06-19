@@ -19,6 +19,10 @@ public class EmprestimoService {
 	public Emprestimo findOne(Long id) {
 		return repository.findOne(id);
 	}
+	
+	/*
+	 * public List<Emprestimo> findById(Long id) { return repository.findById(id); }
+	 */
 
 	public Emprestimo save(Emprestimo emprestimo) {
 		return repository.save(emprestimo);

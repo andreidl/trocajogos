@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "Jogo.findByUsuario", query = "SELECT j FROM Jogo j WHERE j.idUsuario = ?1")
+@NamedQuery(name = "Jogo.findByIdUsuario", query = "SELECT j FROM Jogo j WHERE j.idUsuario = ?1")
 
 public class Jogo implements Serializable {
 	/**
@@ -25,6 +25,8 @@ public class Jogo implements Serializable {
 	private String opiniao;
 	private String descricao;
 	private String foto;
+	
+	
 	private Long idUsuario;
 
 	public Long getIdUsuario() {
