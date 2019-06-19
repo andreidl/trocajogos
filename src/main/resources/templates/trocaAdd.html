@@ -22,8 +22,6 @@
 <link th:href="@{/css/style.css}" rel="stylesheet" />
 <link th:href="@{/css/style-responsive.css}" rel="stylesheet" />
 <script th:src="@{/lib/chart-master/Chart.js}"></script>
-
-
 </head>
 <body>
 	<section id="container">
@@ -33,22 +31,16 @@
 		<section id="main-content">
 			<section class="wrapper site-min-height">
 				<h3>
-					<i class="fa fa-angle-right"></i> Troca add
+					<i class="fa fa-angle-right"></i> Nova Troca
 				</h3>
 				<div class="row mt">
 					<form class="form-horizontal" th:object="${troca}" th:action="@{/troca/save}" method="POST" style="margin: 20px">
 				<div class="form-group">
  					<fieldset>
-						<div class="form-group row">
-							<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
-								<div th:each="detailedError : ${#fields.detailedErrors()}">
-									<span th:text="${detailedError.message}"></span>
-								</div>
-							</div>
-						</div> 					
+									
 						<div class="form-group row">
 						    <div class="col-md-1">
-						        <input type="text" class="form-control input-sm" id="id" th:field="*{id}" readOnly="readonly"/>
+						        <input type="text" class="form-control input-sm" id="id" name="id" th:value="*{id}" readOnly="readonly" />
 						    </div>
 						 </div>
 						 <!-- jogoSolicitado;
@@ -59,47 +51,47 @@
 					 idSolicitado;
 					 dataTroca; -->
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('jogoSolicitado')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Jogo Solicitado</label>
-							    <input type="text" class="form-control input-sm" th:field="*{jogoSolicitado}" autofocus="autofocus" placeholder="Informe o autor" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" name="jogoSolicitado" id="jogoSolicitado" th:value="*{jogoSolicitado}" autofocus="autofocus" placeholder="Jogo Solicitado" maxlength="50" />
 							</div>
 						</div>
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('jogoSolicitante')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Jogo Solicitante</label>
-							    <input type="text" class="form-control input-sm" th:field="*{jogoSolicitante}" autofocus="autofocus" placeholder="Informe o autor" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" name="jogoSolicitante" id="jogoSolicitante" th:value="*{jogoSolicitante}" autofocus="autofocus" placeholder="Jogo Oferecido pelo Solicitante" maxlength="50"/>
 							</div>
 						</div>
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('aceiteInicial')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Aceite Inicial</label>
-							    <input type="text" class="form-control input-sm" th:field="*{aceiteInicial}" autofocus="autofocus" placeholder="Informe o autor" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" name="aceiteInicial" id="aceiteInicial"  th:value="*{aceiteInicial}"  autofocus="autofocus" placeholder="Data de Aceite (Inicial)" maxlength="50"/>
 							</div>
 						</div>
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('aceiteFinal')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Aceite Final</label>
-							    <input type="text" class="form-control input-sm" th:field="*{aceiteFinal}" autofocus="autofocus" placeholder="Informe o autor" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" name="aceiteFinal" id="aceiteFinal" th:value="*{aceiteFinal}" autofocus="autofocus" placeholder="Data de Aceite (Final)" maxlength="50"/>
 							</div>
 						</div>
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('idSolicitado')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Id Solicitado</label>
-							    <input type="text" class="form-control input-sm" th:field="*{idSolicitado}" autofocus="autofocus" placeholder="Informe o autor" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" name="idSolicitado" id="idSolicitado" th:value="*{idSolicitado}"  autofocus="autofocus" placeholder="Identificação do Cedente da Troca" maxlength="50"/>
 							</div>
 						</div>
 						
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('idSolicitante')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Id Solicitante</label>
-							    <input type="text" class="form-control input-sm" th:field="*{idSolicitante}" autofocus="autofocus" placeholder="Informe o autor" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" name="idSolicitante"  id="idSolicitante" th:value="*{idSolicitante}"  autofocus="autofocus" placeholder="Identificação do Solicitante da Troca" maxlength="50"/>
 							</div>
 						</div>
 						
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('dataTroca')}? 'has-error'">
+							<div class="col-md-4">
 							    <label>Data Troca</label>
-							    <input type="text" class="form-control input-sm" th:field="*{dataTroca}" autofocus="autofocus" placeholder="Informe o autor" maxlength="50"/>
+							    <input type="text" class="form-control input-sm" name="dataTroca"  id="dataTroca" th:value="*{dataTroca}" autofocus="autofocus" placeholder="Data onde ocorrerá a troca" maxlength="50"/>
 							</div>
 						</div>						
 					</fieldset>

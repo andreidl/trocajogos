@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Cadastro de Student</title>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="Dashboard" />
+<meta name="keyword"
+	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
+<title>TrocaJogos - Emprestimos</title>
+
+<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<!--external css-->
+<link th:href="@{/lib/font-awesome/css/font-awesome.css}"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/zabuto_calendar.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/lib/gritter/css/jquery.gritter.css}" />
+<!-- Custom styles for this template -->
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+<link th:href="@{/css/style-responsive.css}" rel="stylesheet" />
+<script th:src="@{/lib/chart-master/Chart.js}"></script>
 </head>
 <body>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<strong>Cadastro de Usuario</strong>
-		</div>
-		<div class="panel-body">
-			<form class="form-horizontal" th:object="${usuario}" th:action="@{/usuario/save}" method="POST" style="margin: 10px">
+<section id="container">
+		<div th:replace="components/header :: header"></div>
+		<div th:replace="components/sidebar :: aside"></div>
+		
+		<section id="main-content">
+			<section class="wrapper site-min-height">
+				<h3>
+					<i class="fa fa-angle-right"></i> Emprestimo
+				</h3>
+				<div class="row mt">
+				
+			<form class="form-horizontal" th:object="${emprestimo}" th:action="@{/emprestimo/save}" method="POST" style="margin: 20px">
 				<div class="form-group">
  					<fieldset>
 						<div class="form-group row">
@@ -30,17 +51,41 @@
 						    </div>
 						 </div>
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
-							    <label>Nome</label>
-							    <input type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Informe o autor" maxlength="50"/>
+							<div class="col-md-4" th:classappend="${#fields.hasErrors('dataDevolucao')}? 'has-error'">
+							    <label>Data Devolução</label>
+							    <input type="text" class="form-control input-sm" th:field="*{dataDevolucao}" autofocus="autofocus" placeholder="Data de Devolução (Prevista)" maxlength="50"/>
 							</div>
 						</div>
 						<div class="form-group row">                                                          
-							<div class="col-md-4" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
-							    <label>Nome</label>
-							    <input type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Informe o autor" maxlength="50"/>
+							<div class="col-md-4" th:classappend="${#fields.hasErrors('dataDevolucaoEfetiva')}? 'has-error'">
+							    <label>Data Devolução (Efetiva)</label>
+							    <input type="text" class="form-control input-sm" th:field="*{dataDevolucaoEfetiva}" autofocus="autofocus" placeholder="Data de Devolução (Efetiva)" maxlength="50"/>
 							</div>
-						</div>						
+						</div>
+						<div class="form-group row">                                                          
+							<div class="col-md-4" th:classappend="${#fields.hasErrors('dataEmprestimo')}? 'has-error'">
+							    <label>Data Emprestimo</label>
+							    <input type="text" class="form-control input-sm" th:field="*{dataEmprestimo}" autofocus="autofocus" placeholder="Data de Emprestimo" maxlength="50"/>
+							</div>
+						</div>
+						<div class="form-group row">                                                          
+							<div class="col-md-4" th:classappend="${#fields.hasErrors('idSolicitante')}? 'has-error'">
+							    <label>Solicitante</label>
+							    <input type="text" class="form-control input-sm" th:field="*{idSolicitante}" autofocus="autofocus" placeholder="Solicitante do Emprestimo" maxlength="50"/>
+							</div>
+						</div>
+						<div class="form-group row">                                                          
+							<div class="col-md-4" th:classappend="${#fields.hasErrors('jogoEmprestado')}? 'has-error'">
+							    <label>Jogo Emprestado</label>
+							    <input type="text" class="form-control input-sm" th:field="*{jogoEmprestado}" autofocus="autofocus" placeholder="Jogo Emprestado" maxlength="50"/>
+							</div>
+						</div>
+						<div class="form-group row">                                                          
+							<div class="col-md-4" th:classappend="${#fields.hasErrors('idSolicitado')}? 'has-error'">
+							    <label>Cedente do Emprestimo</label>
+							    <input type="text" class="form-control input-sm" th:field="*{idSolicitado}" autofocus="autofocus" placeholder="Cedente do Emprestimo" maxlength="50"/>
+							</div>
+						</div>													
 					</fieldset>
 				</div>
 				<div class="form-group row">
@@ -48,7 +93,111 @@
 					<a th:href="@{#}" class="btn btn-sm btn-default">Cancelar</a>
 				</div>
 			</form>
-		</div>
-	</div>
+	
+				</div>
+			</section>
+			<!-- /wrapper -->
+		</section>
+
+		<div th:replace="components/footer :: footer"></div>
+	</section>
+
+	<script th:src="@{/lib/jquery/jquery.min.js}"></script>
+
+	<script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+	<script class="include" type="text/javascript"
+		th:src="@{/lib/jquery.dcjqaccordion.2.7.js}"></script>
+	<script th:src="@{/lib/jquery.scrollTo.min.js}"></script>
+	<script th:src="@{/lib/jquery.nicescroll.js}" type="text/javascript"></script>
+	<script th:src="@{/lib/jquery.sparkline.js}"></script>
+	<!--common script for all pages-->
+	<script th:src="@{/lib/common-scripts.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/lib/gritter/js/jquery.gritter.js}"></script>
+	<script type="text/javascript" th:src="@{/lib/gritter-conf.js}"></script>
+	<!--script for this page-->
+	<script th:src="@{/lib/sparkline-chart.js}"></script>
+	<script th:src="@{/lib/zabuto_calendar.js}"></script>
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							var unique_id = $.gritter
+									.add({
+										// (string | mandatory) the heading of the notification
+										title : 'Welcome to Dashio!',
+										// (string | mandatory) the text inside the notification
+										text : 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo.',
+										// (string | optional) the image to display on the left
+										image : 'img/ui-sam.jpg',
+										// (bool | optional) if you want it to fade out on its own or just sit there
+										sticky : false,
+										// (int | optional) the time you want it to be alive for before fading out
+										time : 8000,
+										// (string | optional) the class name you want to apply to that specific message
+										class_name : 'my-sticky-class'
+									});
+
+							return false;
+						});
+	</script>
+	<script type="application/javascript">
+		
+		
+		
+		
+		
+		
+		
+		
+    $(document).ready(function() {
+      $("#date-popover").popover({
+        html: true,
+        trigger: "manual"
+      });
+      $("#date-popover").hide();
+      $("#date-popover").click(function(e) {
+        $(this).hide();
+      });
+
+      $("#my-calendar").zabuto_calendar({
+        action: function() {
+          return myDateFunction(this.id, false);
+        },
+        action_nav: function() {
+          return myNavFunction(this.id);
+        },
+        ajax: {
+          url: "show_data.php?action=1",
+          modal: true
+        },
+        legend: [{
+            type: "text",
+            label: "Special event",
+            badge: "00"
+          },
+          {
+            type: "block",
+            label: "Regular event",
+          }
+        ]
+      });
+    });
+
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+  
+	
+	
+	
+	
+	
+	
+	
+	</script>
 </body>
 </html>

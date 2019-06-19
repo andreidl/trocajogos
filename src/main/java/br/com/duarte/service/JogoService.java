@@ -29,5 +29,9 @@ public class JogoService {
 	public void delete(Long id) {
 		repository.delete(id);
 	}
+	
+	public List<Jogo> findByUsuario(Long id) {
+		return (List<Jogo>) repository.findByUsuario(id);
+	}
 
 }

@@ -23,7 +23,7 @@ public class TrocaController {
 	@GetMapping
 	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView("/troca");
-		mv.addObject("trocas", service.findAll());
+		mv.addObject("troca", service.findAll());
 
 		return mv;
 	}
@@ -38,7 +38,9 @@ public class TrocaController {
 
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
-		return add(service.findOne(id));
+		ModelAndView mv = new ModelAndView("/trocaAdd");
+		mv.addObject("troca", service.findOne(id));
+		return mv;
 	}	
 
 	@PostMapping("/save")

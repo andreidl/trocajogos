@@ -28,7 +28,7 @@ public class AmigoController {
 	@GetMapping
 	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView("/amigo");
-		mv.addObject("amigos", service.findAll());
+		mv.addObject("amigo", service.findAll());
 
 		return mv;
 	}

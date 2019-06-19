@@ -17,15 +17,13 @@ public class Troca implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	         
-	private String jogoSolicitado;
-	private String jogoSolicitante;
 	private String aceiteInicial;
 	private String aceiteFinal;
 	private String idSolicitante;
 	private String idSolicitado;
 	private String dataTroca;
+	private String jogoSolicitado;
+	private String jogoSolicitante;
 	
 	public Long getId() {
 		return id;

@@ -1,17 +1,18 @@
 package br.com.duarte.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario implements Serializable {
@@ -39,6 +40,16 @@ public class Usuario implements Serializable {
 	private String foto;
 	private int active;
 	
+	@ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+	
+//	@ManyToMany(cascade = CascadeType.ALL)
+	//    @JoinTable(name = "user_amigo", 
+	//    joinColumns = @JoinColumn(name = "user_id", referencedColumnName="usu_id_amigo_solicitado"), 
+	//    inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName="usu_id_amigo_solicitante"))
+	//    private Set<Amigo> amigos;
+	
 	public int getActive() {
 		return active;
 	}
@@ -55,9 +66,7 @@ public class Usuario implements Serializable {
 		this.roles = roles;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+	
 
 	public Long getId() {
 		return id;

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.duarte.model.Jogo;
 import br.com.duarte.service.JogoService;
+import br.com.duarte.service.UsuarioService;
 
 @RestController
 @RequestMapping("jogo")
@@ -20,6 +21,9 @@ public class JogoController {
 
 	@Autowired
 	private JogoService service;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	/** chama tela de listagem jogo
 	 * 
@@ -28,7 +32,7 @@ public class JogoController {
 	@GetMapping
 	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView("/jogo");
-		mv.addObject("jogos", service.findAll());
+		mv.addObject("jogo", service.findAll());
 
 		return mv;
 	}
@@ -41,6 +45,7 @@ public class JogoController {
 	@GetMapping("/add")
 	public ModelAndView add(Jogo jogo) {
 		ModelAndView mv = new ModelAndView("/jogoAdd");
+		mv.addObject("usuarios", usuarioService.findAll());
 		mv.addObject("jogo/add", jogo);
 
 		return mv;
@@ -57,7 +62,10 @@ public class JogoController {
 
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
-		return add(service.findOne(id));
+		ModelAndView mv = new ModelAndView("/jogoAdd");
+		mv.addObject("jogo", service.findOne(id));
+		return mv;
+		
 	}
 
 	@GetMapping("/delete/{id}")

@@ -18,12 +18,11 @@ public class Emprestimo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	         
-	private String jogoEmprestado;
-	private String dataEmprestimo;
 	private String dataDevolucao;
 	private String dataDevolucaoEfetiva;
-	private String idSolicitante;
+	private String dataEmprestimo;
+	private String idSolicitante;	
+	private String jogoEmprestado;
 	private String idSolicitado;
 	
 	public Long getId() {

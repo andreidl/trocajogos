@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.duarte.model.Usuario;
+import br.com.duarte.service.JogoService;
 import br.com.duarte.service.UsuarioService;
 
 @RestController
@@ -20,6 +21,9 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService service;
+	
+	@Autowired
+	private JogoService jogoService;
 
 	@GetMapping
 	public ModelAndView findAll() {
@@ -55,6 +59,13 @@ public class UsuarioController {
 	public ModelAndView delete(@PathVariable("id") Long id) {
 		service.delete(id);
 		return findAll();
+	}
+	
+	@GetMapping("/jogos/{id}")
+	public ModelAndView jogos(@PathVariable("id") Long id) {
+		ModelAndView mv = new ModelAndView("/jogo");
+		mv.addObject("jogo", jogoService.findByUsuario(id));
+		return mv;
 	}
 
 }

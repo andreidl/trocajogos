@@ -6,8 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
+//@NamedQueries({
+ //   @NamedQuery(name = "Empresa.findByCnpj", query = "Select e from Empresa e where e.cnpj = :cnpj ")
+//})
+
 public class Amigo implements Serializable {
 	/**
 	 * 
@@ -16,63 +23,54 @@ public class Amigo implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
 	
-	         
-	private String nome;
-	private String apelido;
-	private String email;
-	private String dataNascimento;
-	private String foto;
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getApelido() {
-		return apelido;
-	}
-
-	public void setApelido(String apelido) {
-		this.apelido = apelido;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
+	private Long amgId;	
 	
 	
-
-}
+	@ManyToOne
+	@JoinColumn(referencedColumnName = "user_id")
+	private Usuario usuIdAmigoSolicitante;
+	
+	
+	@ManyToOne
+	@JoinColumn(referencedColumnName = "user_id")
+	private Usuario usuIdAmigoSolicitado;
+	
+	
+	private String amgNome;
+	private String amgDataInicio;
+	
+	public Long getAmgId() {
+		return amgId;
+	}
+	public void setAmgId(Long amgId) {
+		this.amgId = amgId;
+	}
+	public Usuario getUsuIdAmigoSolicitante() {
+		return usuIdAmigoSolicitante;
+	}
+	public void setUsuIdAmigoSolicitante(Usuario usuIdAmigoSolicitante) {
+		this.usuIdAmigoSolicitante = usuIdAmigoSolicitante;
+	}
+	public Usuario getUsuIdAmigoSolicitado() {
+		return usuIdAmigoSolicitado;
+	}
+	public void setUsuIdAmigoSolicitado(Usuario usuIdAmigoSolicitado) {
+		this.usuIdAmigoSolicitado = usuIdAmigoSolicitado;
+	}
+	public String getAmgNome() {
+		return amgNome;
+	}
+	public void setAmgNome(String amgNome) {
+		this.amgNome = amgNome;
+	}
+	public String getAmgDataInicio() {
+		return amgDataInicio;
+	}
+	public void setAmgDataInicio(String amgDataInicio) {
+		this.amgDataInicio = amgDataInicio;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	}

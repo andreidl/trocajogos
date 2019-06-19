@@ -2,6 +2,7 @@ package br.com.duarte.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,47 +14,60 @@ public class Desejo implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	         
-	private String nome;
-	private String descricao;
-	private String idUsuario;
-	private String foto;
-	
-	public Long getId() {
-		return id;
+	private Long dsjId;
+
+	//@Column(name = "dsj_nome_jogo")
+	private String dsjNomeJogo;
+	private Long dsjIdUsuario;
+	private String dsjDataRegistroDesejo;
+	private String dsjDescricaoJogo;
+
+	public Long getDsjId() {
+		return dsjId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setDsjId(Long dsjId) {
+		this.dsjId = dsjId;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getDsjNomeJogo() {
+		return dsjNomeJogo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDsjNomeJogo(String dsjNomeJogo) {
+		this.dsjNomeJogo = dsjNomeJogo;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getDsjDataRegistroDesejo() {
+		return dsjDataRegistroDesejo;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDsjDataRegistroDesejo(String dsjDataRegistroDesejo) {
+		this.dsjDataRegistroDesejo = dsjDataRegistroDesejo;
 	}
 
-	public String getFoto() {
-		return foto;
+	public String getDsjDescricaoJogo() {
+		return dsjDescricaoJogo;
 	}
 
-	public void setFoto(String foto) {
-		this.foto = foto;
+	public void setDsjDescricaoJogo(String dsjDescricaoJogo) {
+		this.dsjDescricaoJogo = dsjDescricaoJogo;
 	}
-	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Long getDsjIdUsuario() {
+		return dsjIdUsuario;
+	}
+
+	public void setDsjIdUsuario(Long dsjIdUsuario) {
+		this.dsjIdUsuario = dsjIdUsuario;
+	}
+
 
 }

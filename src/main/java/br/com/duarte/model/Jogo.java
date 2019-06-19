@@ -6,14 +6,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = "Jogo.findByUsuario", query = "SELECT j FROM Jogo j WHERE j.idUsuario = ?1")
+
 public class Jogo implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -22,7 +25,16 @@ public class Jogo implements Serializable {
 	private String opiniao;
 	private String descricao;
 	private String foto;
-	
+	private Long idUsuario;
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -70,7 +82,5 @@ public class Jogo implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
 
 }

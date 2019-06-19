@@ -23,7 +23,7 @@ public class EmprestimoController {
 	@GetMapping
 	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView("/emprestimo");
-		mv.addObject("emprestimos", service.findAll());
+		mv.addObject("emprestimo", service.findAll());
 
 		return mv;
 	}

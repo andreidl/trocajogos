@@ -8,7 +8,7 @@
 <meta name="author" content="Dashboard" />
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
-<title>TrocaJogos</title>
+<title>TrocaJogos - Trocas</title>
 
 <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
 <!--external css-->
@@ -33,7 +33,7 @@
 		<section id="main-content">
 			<section class="wrapper site-min-height">
 				<h3>
-					<i class="fa fa-angle-right"></i> Lista de trocas
+					<i class="fa fa-angle-right"></i> Lista de Trocas
 				</h3>
 				<div class="row mt">
 					<table
@@ -41,33 +41,27 @@
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>Jogo Solicitado</th>
-								<th>Jogo Solicitante</th>
 								<th>Aceite Inicial</th>
 								<th>Aceite Final</th>
 								<th>Id Solicitante</th>
 								<th>Id Solicitado</th>
 								<th>Data da troca</th>
-								<th></th>
+								<th>Jogo Solicitado</th>
+								<th>Jogo Solicitante</th>
+								<th>Ações</th>
 							</tr>
 						</thead>
-						<!-- jogoSolicitado;
-					 jogoSolicitante;
-					 aceiteInicial;
-					 aceiteFinal;
-					 idSolicitante;
-					 idSolicitado;
-					 dataTroca; -->
+						
 						<tbody>
 							<tr th:each="troca : ${troca}">
 								<td th:text="${troca.id}"></td>
-								<td th:text="${troca.jogoSolicitado}"></td>
-								<td th:text="${troca.jogoSolicitante}"></td>
 								<td th:text="${troca.aceiteInicial}"></td>
 								<td th:text="${troca.aceiteFinal}"></td>
 								<td th:text="${troca.idSolicitante}"></td>
 								<td th:text="${troca.idSolicitado}"></td>
 								<td th:text="${troca.dataTroca}"></td>
+								<td th:text="${troca.jogoSolicitado}"></td>
+								<td th:text="${troca.jogoSolicitante}"></td>
 								<td>
 									<div class="btn-group pull-right">
 										<a class="btn btn-sm btn-primary"
@@ -79,7 +73,9 @@
 							</tr>
 						</tbody>
 					</table>
-					<a class="btn btn-sm btn-success" th:href="@{/troca/add/}">Adicionar</a>
+					<div class="panel-footer">
+					<a class="btn btn-sm btn-success" th:href="@{/troca/add/}">Propor Troca</a>
+				</div>
 				</div>
 			</section>
 			<!-- /wrapper -->
@@ -129,13 +125,6 @@
 	</script>
 	<script type="application/javascript">
 		
-		
-		
-		
-		
-		
-		
-		
     $(document).ready(function() {
       $("#date-popover").popover({
         html: true,
@@ -177,6 +166,7 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   
+	
 	
 	
 	
