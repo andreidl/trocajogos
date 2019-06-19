@@ -28,7 +28,8 @@ public class UsuarioController {
 	@GetMapping
 	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView("/usuario");
-		mv.addObject("usuarios", service.findAll());
+		
+		mv.addObject("usuario", service.findAll());
 
 		return mv;
 	}
@@ -43,7 +44,9 @@ public class UsuarioController {
 
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
-		return add(service.findOne(id));
+		ModelAndView mv = new ModelAndView("/usuarioAdd");
+		mv.addObject("usuario", service.findOne(id));
+		return mv;
 	}
 
 	@PostMapping("/save")
@@ -68,4 +71,10 @@ public class UsuarioController {
 		return mv;
 	}
 
+	@GetMapping("/{id}")
+	public ModelAndView perfil(@PathVariable("id")Long id){
+		ModelAndView mv = new ModelAndView("/usuario");
+		mv.addObject("usuario", service.findOne(id));
+		return mv;
+	}
 }
