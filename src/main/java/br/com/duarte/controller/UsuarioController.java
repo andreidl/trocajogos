@@ -71,7 +71,7 @@ public class UsuarioController {
 		return mv;
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("{id}")
 	public ModelAndView perfil(@PathVariable("id")Long id){
 		ModelAndView mv = new ModelAndView("/usuario");
 		mv.addObject("usuario", service.findOne(id));

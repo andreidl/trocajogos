@@ -45,7 +45,7 @@
 													<label class="col-lg-2 control-label">Nome: </label>
 													<div class="col-lg-6">
 														<input type="text" name="nome" placeholder="Insira o nome " id="nome"
-															th:value="*{nome}" class="form-control"/>
+															th:value="*{nome}" th:text="${usuario.nome}" class="form-control"/>
 													</div>
 												</div>
 												<div class="form-group">
