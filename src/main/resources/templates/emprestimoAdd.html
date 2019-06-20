@@ -36,41 +36,41 @@
 				</h3>
 				<div class="row mt">
 
+
 					<form class="form-horizontal" th:object="${emprestimo}"
 						th:action="@{/emprestimo/save}" method="POST" style="margin: 20px">
 						<div class="form-group">
 							<fieldset>
 								<div class="form-group row">
-									<div class="alert alert-danger"
-										th:if="${#fields.hasAnyErrors()}">
-										<div th:each="detailedError : ${#fields.detailedErrors()}">
-											<span th:text="${detailedError.message}"></span>
+									<div class="col-md-12">
+										<label>Selecione o Amigo:</label>
+										<div class="btn-group">
+
+											<button type="button" class="btn btn-default dropdown-toggle"
+												data-toggle="dropdown" aria-expanded="true">
+												Clique e Selecione <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a href="#">INSIRA AQUI O DATA SOURCE</a></li>
+												<li><a href="#">Amigo N</a></li>
+											</ul>
 										</div>
 									</div>
 								</div>
-
-								<label>Selecione o Amigo:</label>
-								<div class="btn-group">
-								
-									<button type="button" class="btn btn-default dropdown-toggle"
-										data-toggle="dropdown" aria-expanded="true">
-										Clique e Selecione <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<li><a href="#">INSIRA AQUI O DATA SOURCE</a></li>
-										<li><a href="#">Amigo N</a></li>
-									</ul>
-								</div>
-								<label>Selecione o Jogo deste amigo:</label>
-								<div class="btn-group">								
-									<button type="button" class="btn btn-default dropdown-toggle"
-										data-toggle="dropdown" aria-expanded="true">
-										Clique e Selecione <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<li><a href="#">INSIRA AQUI O DATA SOURCE</a></li>
-										<li><a href="#">Jogo N</a></li>
-									</ul>
+								<div class="form-group row">
+									<div class="col-md-12">
+										<label>Selecione o Jogo deste amigo:</label>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default dropdown-toggle"
+												data-toggle="dropdown" aria-expanded="true">
+												Clique e Selecione <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a href="#">INSIRA AQUI O DATA SOURCE</a></li>
+												<li><a href="#">Jogo N</a></li>
+											</ul>
+										</div>
+									</div>
 								</div>
 								<div class="form-group row">
 									<div class="col-md-1">
@@ -87,7 +87,7 @@
 											placeholder="Data de Devolução (Prevista)" maxlength="50" />
 									</div>
 								</div>
-							<!--  	<div class="form-group row">
+								<!--  	<div class="form-group row">
 									<div class="col-md-4"
 										th:classappend="${#fields.hasErrors('dataDevolucaoEfetiva')}? 'has-error'">
 										<label>Data Devolução (Efetiva)</label> <input type="text"
@@ -105,7 +105,7 @@
 											maxlength="50" />
 									</div>
 								</div>
-							<!--  	<div class="form-group row">
+								<!--  	<div class="form-group row">
 									<div class="col-md-4"
 										th:classappend="${#fields.hasErrors('idSolicitante')}? 'has-error'">
 										<label>Solicitante</label> <input type="text"
@@ -114,7 +114,7 @@
 											maxlength="50" />
 									</div>
 								</div> -->
-							<!--  	<div class="form-group row">
+								<!--  	<div class="form-group row">
 									<div class="col-md-4"
 										th:classappend="${#fields.hasErrors('jogoEmprestado')}? 'has-error'">
 										<label>Jogo Emprestado</label> <input type="text"
@@ -123,7 +123,7 @@
 											maxlength="50" />
 									</div>
 								</div> -->
-							<!--  	<div class="form-group row">
+								<!--  	<div class="form-group row">
 									<div class="col-md-4"
 										th:classappend="${#fields.hasErrors('idSolicitado')}? 'has-error'">
 										<label>Cedente do Emprestimo</label> <input type="text"
@@ -139,7 +139,6 @@
 							<a th:href="@{#}" class="btn btn-sm btn-default">Cancelar</a>
 						</div>
 					</form>
-
 				</div>
 			</section>
 			<!-- /wrapper -->
@@ -197,6 +196,15 @@
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
     $(document).ready(function() {
       $("#date-popover").popover({
         html: true,
@@ -238,6 +246,15 @@
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
   
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
