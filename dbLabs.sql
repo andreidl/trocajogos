@@ -68,13 +68,16 @@ usuIdSolicitante int4, -- fk usuario
 usuIdCedente int4 -- fk usuario
 );
 
+
 CREATE TABLE Dialogo (
 dlgId int4,
-dlgRemetente varchar(30), -- fk usuario
-dlgDestinatario varchar(30), -- fk usuario
+dlgRemetente int4, -- fk usuario
+dlgDestinatario int4, -- fk usuario
 dlgDescricao varchar(300),
 dlgTroca varchar(100)
 );
+
+
 
 CREATE TABLE Roles (
 rldId int4,
@@ -104,40 +107,64 @@ ALTER TABLE Amigo ADD CONSTRAINT pk_amizade PRIMARY KEY (amgId);
 ALTER TABLE Emprestimo ADD CONSTRAINT pk_emprestimo PRIMARY KEY (empId);
 ALTER TABLE Dialogo ADD CONSTRAINT pk_dialogo PRIMARY KEY (dlgId);
 ALTER TABLE Roles ADD CONSTRAINT pk_role PRIMARY KEY (rldId);
-ALTER TABLE Desejo ADD CONSTRAINT pl_desejo PRIMARY KEY (djsId);
+ALTER TABLE Desejo ADD CONSTRAINT pk_desejo PRIMARY KEY (dsjId);
 
 #-------Criação de FKs
 ALTER TABLE Amigo
-	ADD CONSTRAINT fk_usuario_amizade
-	FOREIGN KEY(usuIdAmigoSolicitante, usuIdAmigoSolicitado) REFERENCES Usuario(usuId);
+	ADD CONSTRAINT fk_usuario_amigo
+	FOREIGN KEY(usuIdAmigoSolicitante) REFERENCES Usuario(usuId);
+    
+ALTER TABLE Amigo
+	ADD CONSTRAINT fk_amigo_usuario
+	FOREIGN KEY(usuIdAmigoSolicitado) REFERENCES Usuario(usuId);
 
 ALTER TABLE Jogo
 	ADD CONSTRAINT fk_jogo_usuario
     FOREIGN KEY(usuIdProprietario) REFERENCES Usuario(usuId);
     
 ALTER TABLE Troca
-		ADD CONSTRAINT fk_troca_usuarios
-        FOREIGN KEY(usuIdSiolicitante, usuIdCedente) REFERENCES Usuario(usuId);
+		ADD CONSTRAINT fk_troca_usuario_solicitante
+        FOREIGN KEY(usuIdSolicitante) REFERENCES Usuario(usuId);
+        
+ALTER TABLE Troca
+		ADD CONSTRAINT fk_troca_usuarios_solicitado
+        FOREIGN KEY(usuIdCedente) REFERENCES Usuario(usuId);
        
 ALTER TABLE Troca_Jogos
-		ADD CONSTRAINT fk_troca_jogos
-        FOREIGN KEY (jogIdSolicitante, jogIdSolicitado) REFERENCES Jogo(jogId);
+		ADD CONSTRAINT fk_troca_jogos_solicitante
+        FOREIGN KEY (jogIdSolicitante) REFERENCES Jogo(jogId);
+        
+ALTER TABLE Troca_Jogos
+		ADD CONSTRAINT fk_troca_jogos_solicitado
+        FOREIGN KEY (jogIdSolicitado) REFERENCES Jogo(jogId);
 
 ALTER TABLE Amigo
-	ADD CONSTRAINT fk_amizade
-    FOREIGN KEY (usuIdAmigoSolicitante, usuIdAmigoSolicitado) REFERENCES Usuario(usuId);
+	ADD CONSTRAINT fk_amizade_solicitante
+    FOREIGN KEY (usuIdAmigoSolicitante) REFERENCES Usuario(usuId);
+    
+    ALTER TABLE Amigo
+	ADD CONSTRAINT fk_amizade_solicitado
+    FOREIGN KEY (usuIdAmigoSolicitado) REFERENCES Usuario(usuId);
     
 ALTER TABLE Emprestimo
 		ADD CONSTRAINT fk_emprestimo_jogo
         FOREIGN KEY(jogIdJogoEmprestado) REFERENCES Jogo(jogId);
 
 ALTER TABLE Emprestimo
-		ADD CONSTRAINT fk_emprestimo_usuario
-        FOREIGN KEY(usuIdSolicitante, usuIdCedente) REFERENCES Usuario(usuId);
+		ADD CONSTRAINT fk_emprestimo_usuario_solicitante
+        FOREIGN KEY(usuIdSolicitante) REFERENCES Usuario(usuId);
+
+ALTER TABLE Emprestimo
+		ADD CONSTRAINT fk_emprestimo_usuario_cedente
+        FOREIGN KEY(usuIdCedente) REFERENCES Usuario(usuId);
         
 ALTER TABLE Dialogo
-		ADD CONSTRAINT fk_dialogo_usuario
-        FOREIGN KEY(dlgRemetente, dlgDestinatario) REFERENCES Usuario(usuId);
+		ADD CONSTRAINT fk_dialogo_usuario_remetente
+        FOREIGN KEY(dlgRemetente) REFERENCES Usuario(usuId);
+
+ALTER TABLE Dialogo
+		ADD CONSTRAINT fk_dialogo_usuario_destinatario
+        FOREIGN KEY(dlgDestinatario) REFERENCES Usuario(usuId);
         
 ALTER TABLE Desejo
 		ADD CONSTRAINT fk_desejo_usuario
@@ -145,7 +172,7 @@ ALTER TABLE Desejo
 
 ALTER TABLE UserRole
 		ADD CONSTRAINT fk_user_role
-        FOREIGN KEY () REFERENCES Usuario(usuId);
+        FOREIGN KEY (usuId) REFERENCES Usuario(usuId);
         
 #-------Criação de Procedures (inclui procedure de relatorio)
 #-------PR1_Lista_Usuarios
